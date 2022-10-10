@@ -23,7 +23,7 @@ const bodySwitcher = {
         this.refs.body.style.backgroundColor = this.getRandomHexColor();
     },
     getRandomHexColor() {
-        color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+        const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
         return color.length === 7 ? color : this.getRandomHexColor();
     },
     init() {
