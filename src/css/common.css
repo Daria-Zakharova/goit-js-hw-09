@@ -31,7 +31,7 @@ img {
 
 .timer-wrap {
   position: absolute;
-  top: 8%;
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
   padding: 10px;
@@ -40,7 +40,6 @@ img {
   flex-direction: column;
   border: solid 1px black;
   border-radius: 3px;
-  /* background-color: rgb(238, 238, 238); */
   animation: recolor 2000ms linear 0s infinite alternate;
 }
 
