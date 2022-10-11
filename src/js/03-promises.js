@@ -33,10 +33,10 @@ function createObjFromKeysArr(basicArr, result) {
 }
 
 function calcTotalTime(delay, step, amount) {
-  if(amount === 2){ 
+  if(amount === 1){ 
     return delay; 
   } 
-  return delay + step * (amount - 1) + calcTotalTime(delay, step, (amount - 1));
+  return delay + step * (amount - 2) + calcTotalTime(delay, step, (amount - 1));
 }
 
 function createPromise(position, delay) {

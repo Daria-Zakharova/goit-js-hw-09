@@ -20,13 +20,17 @@ img {
 .input-wrap {
   margin-bottom: 10px;
   display: flex;
-  gap: 5px;
+  gap: 5%;
 }
 
 .timer-input{
   flex-grow: 1;
   border: solid 1px black;
   border-radius: 3px;
+}
+
+button[data-start] {
+  min-width: 22%;
 }
 
 .timer-wrap {

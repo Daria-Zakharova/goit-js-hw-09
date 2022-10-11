@@ -32,18 +32,18 @@ const options = {
 let intervalId = null;
 let selectedTime = null;
 
-function init() {
+function initTimer() {
     refs.startBtn.disabled = true;            
     flatpickr('#datetime-picker', options);
     
-    refs.startBtn.addEventListener('click', start);
+    refs.startBtn.addEventListener('click', startTimer);
 };
 
-function start() {
-    refs.startBtn.removeEventListener('click', start);
+function startTimer() {
+    refs.startBtn.removeEventListener('click', startTimer);
     refs.startBtn.textContent = 'Stop';
     refs.startBtn.setAttribute('style', 'background-color: red; border-radius: 3px; border: solid 1px black;');
-    refs.startBtn.addEventListener('click', stop);
+    refs.startBtn.addEventListener('click', stopTimer);
     refs.startBtn.disabled = false;
     refs.dateTimeInput.disabled = true;
     setTime();
@@ -61,23 +61,23 @@ function setTime() {
     });
 
     if (deltaTime < 1000) {
-        stop();
+        stopTimer();
     }
 };
 
-function stop(){
-    refs.startBtn.removeEventListener('click', stop);
+function stopTimer(){
+    refs.startBtn.removeEventListener('click', stopTimer);
     refs.startBtn.textContent = 'Start';
     refs.startBtn.removeAttribute('style');
-    refs.startBtn.addEventListener('click', start);
+    refs.startBtn.addEventListener('click', startTimer);
     refs.dateTimeInput.disabled = false;
     refs.startBtn.disabled = true;
     clearInterval(intervalId);
     flatpickr('#datetime-picker', {...options, defaultDate: new Date(),});
-    reset();
+    resetTimer();
 };
 
-function reset() {    
+function resetTimer() {    
     Object.keys(refs).forEach((key, idx) => {
         if(idx < 4) {
             refs[key].textContent = '00';
@@ -105,4 +105,4 @@ function addLeadingZero (num){
     return num.toString().padStart(2, '0');
 }
 
-init();
+initTimer();
