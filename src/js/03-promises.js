@@ -1,5 +1,9 @@
 import Notiflix from 'notiflix';
 
+Notiflix.Notify.init({
+  cssAnimationStyle: 'from-right',
+});
+
 const refs = {
   form: document.querySelector('form'),
 }
@@ -15,12 +19,6 @@ function onSubmit(evt) {
   createObjFromKeysArr(evt.currentTarget.elements, formData);
   const {delay, step, amount} = formData;
 
-  //prevents notify disappearing before all the results are displayed
-  Notiflix.Notify.init({
-    cssAnimationStyle: 'from-right',
-    timeout: (calcTotalTime(delay, step, amount) ? calcTotalTime(delay, step, amount) : calcTotalTime(delay, step, amount) + 1000),
-  });
-
   repeatPromise(delay, step, amount);
 }
 
@@ -30,13 +28,6 @@ function createObjFromKeysArr(basicArr, result) {
       result[key] = Number(basicArr[key].value);
     }
   });
-}
-
-function calcTotalTime(delay, step, amount) {
-  if(amount === 1){ 
-    return delay; 
-  } 
-  return delay + step * (amount - 2) + calcTotalTime(delay, step, (amount - 1));
 }
 
 function createPromise(position, delay) {
